@@ -21,8 +21,26 @@ let handleLogin = async (req, res) => {
         message: userData.message,
         user: userData.user ? userData.user : {}
     });
-}
+};
+
+let handleGetUserInfor = async (req, res) => {
+    let id = req.body.id;
+    if (!id) {
+        return res.status(200).json({
+            errCode: 1,
+            message: 'no user id found',
+            users: []
+        });
+    }
+    let users = await userService.getUserInfor(id);
+    return res.status(200).json({
+        errCode: 0,
+        massage: 'OK',
+        users
+    });
+};
 
 module.exports = {
     handleLogin: handleLogin,
+    handleGetUserInfor: handleGetUserInfor,
 }
