@@ -176,6 +176,7 @@ let updateUser = (data) => {
         firstName: data.firstName,
         lastName: data.lastName,
         address: data.address,
+        phonenumber: data.phonenumber,
       });
 
       await user.save();
